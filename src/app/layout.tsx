@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/globals.css";
 import { Poppins } from "next/font/google";
 import Header from "@/components/layouts/Header";
+import Footer from "@/components/layouts/Footer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -25,10 +26,13 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${poppins.variable} antialiased`}
+        className={`${poppins.variable} antialiased min-h-screen flex flex-col`}
       >
         <Header />
-        {children}
+        <main className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

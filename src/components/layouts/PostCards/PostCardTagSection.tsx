@@ -10,28 +10,22 @@ const PostCardTagSection = ({ post_id }: { post_id: number }) => {
   useEffect(() => {
     const fetchTagData = async () => {
       try {
-        // Fetch tag IDs for the post
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/tags/tag/post/${post_id}`
-        );
-        if (!res.ok) throw new Error("Failed to fetch tag IDs");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tags/post/${post_id}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
-        const tagList: PostTagType[] = await res.json();
-        const tagIds = tagList.map((tag) => tag.tag_id); // Adjust key as needed
+        const data = await res.json();
 
-        // Fetch details for each tag ID
-        const detailRequests = tagIds.map((id) =>
-          fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tags/tag/${id}`).then(
-            async (res) => {
-              if (!res.ok) throw new Error(`Failed fetching tag ${id}`);
-              return await res.json();
-            }
-          )
-        );
+        if (!res.ok) {
+          throw new Error(data.message || "Failed to fetch tags");
+        }
 
-        const detailResponses = await Promise.all(detailRequests);
-        const flattenedDetails = detailResponses.flat(); // Handle nested arrays
-        setTagDetails(flattenedDetails);
+        console.log("Fetched tags:", data);
+        setTagDetails(data as TagType[]);
+        
       } catch (err) {
         console.error("Error loading tags:", err);
         setError(new Error(String(err)));
@@ -42,6 +36,8 @@ const PostCardTagSection = ({ post_id }: { post_id: number }) => {
 
     fetchTagData();
   }, []);
+
+
 
   const hasTag = tagDetails && tagDetails.length > 0
   

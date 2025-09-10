@@ -5,7 +5,7 @@ const LargeTitle = ({title_text} : {
 }) => {
   return (
     <div>
-        <h1 className='font-poppins text-4xl font-bold'>{title_text}</h1>
+        <h1 className='font-poppins text-2xl md:text-4xl font-bold'>{title_text}</h1>
     </div>
   )
 }

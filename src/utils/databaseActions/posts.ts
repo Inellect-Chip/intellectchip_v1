@@ -68,7 +68,9 @@ export const search_posts = async (query: string) => {
         let { data: searched_posts, error } = await supabase
             .from('posts')
             .select('*')
-            .ilike('post_title', `%${query}%`);
+            .ilike('post_content', `%${query}%`)
+            .ilike('post_title', `%${query}%`)
+            .ilike('post_short_description', `%${query}%`);
 
         if (error) {
             console.log("Error searching posts:", error);
@@ -135,4 +137,45 @@ export const upadte_view_count = async (postId: number) => {
 }
 
 
+export const access_posts_for_tag = async (tag_slug: string) => {
 
+    try{
+        let { data: post_view, error } = await supabase
+            .from('post_view')
+            .select('*')
+            .eq('tag_slug', tag_slug)
+        
+        if(error){
+            console.log("Error accessing posts for tag:", error);
+            throw error;
+        }
+
+        console.log("Posts fetched for tag:", post_view);
+        
+        return post_view;
+    }
+    catch(error){
+        console.log("Error accessing posts for tag:", error);
+        return null;
+    }
+}
+
+
+export const most_liked_posts = async () => {
+    try {
+        let { data: posts, error } = await supabase
+            .from('posts')
+            .select('*')
+            .order('post_like_count', { ascending: false })
+
+        if (error) {
+            console.log("Error fetching most liked posts:", error);
+            throw error;
+        }
+        return posts;
+
+    } catch (error) {
+        console.log("Error fetching most liked posts:", error);
+        return null;
+    }
+}

@@ -9,10 +9,10 @@ export const HeaderNavigations: navigationType[] = [
     name: "Airtificial Intelligents",
     href: "/tag/ai",
   },
-  {
-    name: "Machine Learning",
-    href: "/tag/machine_learning",
-  },
+  // {
+  //   name: "Machine Learning",
+  //   href: "/tag/machine_learning",
+  // },
   {
     name: "Readings",
     href: "/posts",
