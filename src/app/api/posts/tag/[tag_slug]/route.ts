@@ -1,7 +1,7 @@
 import { access_posts_for_tag } from "@/utils/databaseActions/posts";
 import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async (req:NextRequest, context : any) => {
+export const POST = async (req:NextRequest, context: { params: Promise<{ tag_slug: string }> }) => {
 
     const { tag_slug } = await context.params;
 
