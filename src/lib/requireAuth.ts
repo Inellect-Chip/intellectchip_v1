@@ -1,8 +1,14 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
+interface AuthResult {
+    userId: string | null;
+    response: NextResponse | null;
+}
 
-export async function requireAuth() {
+
+export async function requireAuth(): Promise<AuthResult> {
+
     const { userId } = await auth();
 
     if (!userId) {
