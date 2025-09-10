@@ -1,7 +1,7 @@
 import { access_single_tag } from "@/utils/databaseActions/tags";
 import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async (request: NextRequest, context: any) => {
+export const POST = async (request: NextRequest, context: { params: Promise<{ id: string }> }) => {
 
     const {id} = await context.params;
     const tag = await access_single_tag(Number(id));

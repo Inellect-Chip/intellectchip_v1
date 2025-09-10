@@ -2,8 +2,8 @@ import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 
-export function requireAuth() {
-    const { userId } = auth();
+export async function requireAuth() {
+    const { userId } = await auth();
 
     if (!userId) {
         return {
