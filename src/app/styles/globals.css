@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --primary-color: #155DFC;
+  --primary-foreground-color: #030f29;
+
+  --secondary-color: #EFF4FF;
+  --secondary-foreground-color: #6D7A98;
+
+  --mute-foreground-color: rgb(223, 223, 223);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-poppins: var(--font-poppins);
+
+  --color-primary: var(--primary-color);
+  --color-primary-foreground: var(--primary-foreground-color);
+
+  --color-secondary: var(--secondary-color);
+  --color-secondary-foreground: var(--secondary-foreground-color);
+
+  --color-mute-foreground: var(--mute-foreground-color)
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins);
+}
+
+.body-content{
+  @apply w-full px-5 md:w-11/12 md:mx-auto md:px-0 md:max-w-[1400px]
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  @apply font-poppins
+}
+
+.post-body {
+  @apply w-full max-w-[1100px] mx-auto px-6 md:w-5/6 md:px-0 text-primary-foreground
+}
+
+
+/* ===================================== */
+/* navigation link styles */
+/* ===================================== */
+/* Base nav link */
+.nav-link {
+  @apply text-sm font-poppins relative inline-block text-primary-foreground hover:text-primary transition-all duration-300 ease-in-out;
+}
+
+.nav-link::after {
+  @apply content-[''] absolute left-0 bottom-[-10px] w-0 h-[2px] bg-primary transition-all duration-300 ease-in-out;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+/* Active link styles */
+.active-link {
+  @apply text-primary font-semibold;
+}
+
+.active-link::after {
+  @apply w-full;
+}
+
+
+/* ===================================== */
+/* slider action button */
+/* ===================================== */
+.slider-btn {
+  @apply text-xl p-2 rounded-full hover:bg-gray-100 transition border border-gray-300 cursor-pointer
+}
+
+
+/* ==================================== */
+/* single post content */
+/* ==================================== */
+.post div {
+  @apply mb-8
+}
+
+.post h2 {
+  @apply text-2xl font-semibold leading-[42px]
+}
+
+.post h3 {
+  @apply text-xl
+}
+
+.post p {
+  @apply text-[14px] leading-[30px] text-zinc-800
+}
+
+.post ul {
+  @apply text-zinc-800 mt-2
+}
+
+.post li {
+  @apply mx-8 leading-[24px] list-disc mb-1.5
+}
