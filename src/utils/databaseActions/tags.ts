@@ -9,7 +9,6 @@ export const access_all_tags = async() => {
         
         if(error) throw error
 
-        console.log("Tags fetched:", tags)
         return tags
     }
     catch(error){
@@ -61,8 +60,7 @@ export const access_tags_for_post = async(post_id : number) => {
                 post_tags.push(tag)
             }
         }
-        console.log("Tags for post fetched:", post_tags)
-        
+
         return post_tags
     }
     catch(error){

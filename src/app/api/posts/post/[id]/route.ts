@@ -1,7 +1,7 @@
 import { access_single_post } from "@/utils/databaseActions/posts";
-import { NextApiRequest } from "next";
+import { NextRequest } from "next/server";
 
-export const POST = async (request: NextApiRequest, context : any) => {
+export const POST = async (request: NextRequest, context: { params: Promise<{ id: string }> }) => {
     const {id} = await context.params;
     const post = await access_single_post(Number(id));
 

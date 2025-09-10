@@ -6,7 +6,9 @@ interface AuthResult {
     response: NextResponse | null;
 }
 
+
 export async function requireAuth(): Promise<AuthResult> {
+
     const { userId } = await auth();
 
     if (!userId) {
