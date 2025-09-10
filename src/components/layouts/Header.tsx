@@ -3,11 +3,14 @@
 import { HeaderNavigations } from '@/navigations/header_navigations';
 import Image from 'next/image';
 import Link from 'next/link';
-import { HiMenu, HiX } from 'react-icons/hi';
-import { HiSearch } from 'react-icons/hi';
-import { usePathname, useRouter } from 'next/navigation';
+import { HiMenu, HiX, HiSearch } from 'react-icons/hi';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
+// NEW: Clerk UI
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+// NEW: remember last page for redirect after login
+import { saveRedirectPath } from '@/lib/redirect';
 
 const Header = () => {
   const pathname = usePathname();
@@ -30,9 +33,15 @@ const Header = () => {
       );
     });
 
+  // Remember current path, then go to /login or /register
+  const goAuth = (dest: '/login' | '/register') => {
+    if (pathname) saveRedirectPath(pathname);
+    window.location.href = dest;
+  };
+
   return (
     <div className="sticky top-0 z-50 bg-white shadow-sm h-[80px] flex items-center">
-      <div className="body-content flex items-center justify-between">
+      <div className="body-content flex items-center justify-between w-full">
         {/* Logo */}
         <Link href="/">
           <Image
@@ -47,6 +56,7 @@ const Header = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
           {renderNavLinks()}
+
           {/* Search Icon */}
           <button
             onClick={() => setSearchOpen(true)}
@@ -55,11 +65,30 @@ const Header = () => {
           >
             <HiSearch />
           </button>
+
+          {/* Auth controls */}
+          <SignedOut>
+            <button
+              onClick={() => goAuth('/login')}
+              className="px-3 py-1 text-sm border rounded-md"
+            >
+              Sign in
+            </button>
+            <button
+              onClick={() => goAuth('/register')}
+              className="px-3 py-1 text-sm rounded-md bg-black text-white"
+            >
+              Sign up
+            </button>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
         </div>
 
         {/* Mobile Menu Toggle */}
         <div className="flex md:hidden items-center gap-2">
-          {/* Search Icon for mobile */}
           <button
             onClick={() => setSearchOpen(true)}
             aria-label="Open search"
@@ -78,8 +107,19 @@ const Header = () => {
 
         {/* Mobile Dropdown */}
         {menuOpen && (
-          <div className="absolute top-[60px] left-0 w-full bg-white shadow-md flex flex-col items-start px-6 py-4 gap-6 md:hidden z-40">
+          <div className="absolute top-[80px] left-0 w-full bg-white shadow-md flex flex-col items-start px-6 py-4 gap-6 md:hidden z-40">
             {renderNavLinks()}
+
+            {/* Mobile auth controls */}
+            <SignedOut>
+              <button onClick={() => goAuth('/login')} className="py-2">Sign in</button>
+              <button onClick={() => goAuth('/register')} className="py-2">Sign up</button>
+            </SignedOut>
+            <SignedIn>
+              <div className="py-2">
+                <UserButton afterSignOutUrl="/" />
+              </div>
+            </SignedIn>
           </div>
         )}
 
@@ -105,7 +145,6 @@ const Header = () => {
                   <HiX />
                 </button>
               </div>
-              {/* You can add search results here */}
               <div className="text-sm text-gray-400">Type to search...</div>
             </div>
           </div>

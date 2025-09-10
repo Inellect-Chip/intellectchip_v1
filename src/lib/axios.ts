@@ -26,13 +26,13 @@ export const getAccessToken = () => accessToken;
 
 // Request Interceptor: attach accessToken to every request
 instance.interceptors.request.use(
-    (config) => {
+    (config: InternalAxiosRequestConfig) => {
         if (accessToken) {
             config.headers.Authorization = `Bearer ${accessToken}`;
         }
         return config;
     },
-    (error) => {
+    (error: any) => {
         console.error(" Request error:", error);
         return Promise.reject(error);
     }
@@ -40,7 +40,7 @@ instance.interceptors.request.use(
 
 // Response Interceptor: handle 401 (token expired)
 instance.interceptors.response.use(
-    (response) => response,
+    (response: any) => response,
     async (error: AxiosError) => {
         const originalConfig = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
 
