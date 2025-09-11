@@ -99,8 +99,6 @@ const SinglePostPage = () => {
   }, [])
 
   const { user: currentUser } = useUser();
-  console.log("Current User:", currentUser?.id);
-  console.log(typeof currentUser?.id);
   
   return (
     isLoading ? (
