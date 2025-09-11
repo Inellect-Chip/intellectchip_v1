@@ -120,11 +120,11 @@ export const upadte_view_count = async (postId: number) => {
             throw new Error("Post not found");
         }
 
-        const updatedLikes = post.post_reading_time ? post.post_reading_time + 1 : 1;
+        const updatedLikes = post.post_view_count ? post.post_view_count + 1 : 1;
 
         const { data, error } = await supabase
             .from('posts')
-            .update({ post_reading_time: updatedLikes })
+            .update({ post_view_count: updatedLikes })
             .eq('id', postId)
             .select()
 

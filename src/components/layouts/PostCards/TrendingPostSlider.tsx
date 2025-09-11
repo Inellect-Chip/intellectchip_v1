@@ -10,7 +10,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2'
 
-const TrendingPostSlider = ({ posts }: { posts: PostType[] }) => {
+const TrendingPostSlider = ({ posts, title }: { posts: PostType[], title: string }) => {
   const prevRef = useRef<HTMLButtonElement | null>(null)
   const nextRef = useRef<HTMLButtonElement | null>(null)
   const [isSwiperReady, setIsSwiperReady] = useState(false)
@@ -26,7 +26,7 @@ const TrendingPostSlider = ({ posts }: { posts: PostType[] }) => {
     <div className="body mt-12 space-y-6 relative">
       {/* Header Section */}
       <div className="flex items-center justify-between">
-        <LargeTitle title_text="Most Popular Readings" />
+        <LargeTitle title_text={title} />
         <div className="flex gap-2">
           <button ref={prevRef} className="slider-btn" aria-label="Previous slide">
             <HiChevronLeft />

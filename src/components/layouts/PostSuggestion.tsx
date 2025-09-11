@@ -62,15 +62,13 @@ const PostSuggestion = () => {
 
   return (
     <div>
-      <Title title_text="Suggested Posts" />
-
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : (
         <div>
-            <TrendingPostSlider posts={posts} />
+            <TrendingPostSlider posts={posts} title="Suggested Posts" />
         </div>
       )}
     </div>

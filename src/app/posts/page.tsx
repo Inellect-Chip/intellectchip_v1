@@ -40,9 +40,7 @@ const page = () => {
 
         fetchPosts();
     }, [])
-
-    console.log("posts in suggestion", posts)
-
+    
   return (
     <div className='body-content mt-8'>
         {
