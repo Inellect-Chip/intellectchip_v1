@@ -63,7 +63,7 @@ const Header = () => {
             aria-label="Open search"
             className="text-2xl text-primary-foreground hover:text-primary transition"
           >
-            <HiSearch />
+            {/* <HiSearch /> */}
           </button>
 
           {/* Auth controls */}
@@ -94,7 +94,7 @@ const Header = () => {
             aria-label="Open search"
             className="text-2xl text-primary-foreground hover:text-primary transition"
           >
-            <HiSearch />
+            {/* <HiSearch /> */}
           </button>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
