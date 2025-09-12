@@ -42,13 +42,21 @@ const PostCardTagSection = ({ post_id }: { post_id: number }) => {
   const hasTag = tagDetails && tagDetails.length > 0
   
   return (
-    <div className="flex gap-1">
-      {
-        !isLoading && !error && hasTag && (
-          tagDetails.slice(0, 3).map((tagDetail, index) => (
-            <Tag tag={tagDetail} key={index} />
-          ))
-        )
+    <div className="flex flex-wrap ">
+      {!isLoading && !error && hasTag &&
+        tagDetails.slice(0, 3).map((tag: any, index: number) => {
+          const bgColor = tag.tag_bg_color || "#f3f4f6";
+          const textColor = tag.tag_text_color || "#374151";
+          const borderColor = tag.tag_border_color || "#d1d5db";
+          return (
+            <span
+              key={index}
+              className="text-xs font-medium mr-2 px-2.5 py-1 rounded-xl bg-blue-50 text-blue-800 border border-blue-200"
+            >
+              {tag.tag_name}
+            </span>
+          );
+        })
       }
     </div>
   );

@@ -63,20 +63,20 @@ const Header = () => {
             aria-label="Open search"
             className="text-2xl text-primary-foreground hover:text-primary transition"
           >
-            <HiSearch />
+            {/* <HiSearch /> */}
           </button>
 
           {/* Auth controls */}
           <SignedOut>
             <button
               onClick={() => goAuth('/login')}
-              className="px-3 py-1 text-sm border rounded-md"
+              className="px-3 py-1 text-sm  rounded-md cursor-pointer"
             >
               Sign in
             </button>
             <button
               onClick={() => goAuth('/register')}
-              className="px-3 py-1 text-sm rounded-md bg-black text-white"
+              className="px-3 h-[40px] text-sm font-semibold cursor-pointer rounded-md bg-primary text-white"
             >
               Sign up
             </button>
@@ -94,7 +94,7 @@ const Header = () => {
             aria-label="Open search"
             className="text-2xl text-primary-foreground hover:text-primary transition"
           >
-            <HiSearch />
+            {/* <HiSearch /> */}
           </button>
           <button
             onClick={() => setMenuOpen(!menuOpen)}

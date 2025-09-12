@@ -47,7 +47,7 @@ const TrendingReadingSection = () => {
             <PostCardSkeleton />
           </div>
         ) : hasPosts && !error ? (
-          <TrendingPostSlider posts={trendingArticles} />
+          <TrendingPostSlider posts={trendingArticles} title='Trending Articles' />
         ) : (
           <p className="text-gray-500 text-center py-10">There are no valid posts yet.</p>
         )
