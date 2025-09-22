@@ -14,7 +14,7 @@ const TrendingReadingSection = () => {
 
         const fetchTrendingArticles = async () => {
             try{
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/most-popular`, {
+                const res = await fetch(`/api/posts/most-popular`, {
                     method : "POST",
                     headers : {
                         'Content-Type' : 'application/json'

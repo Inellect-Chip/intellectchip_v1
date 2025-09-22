@@ -24,7 +24,7 @@ const SinglePostPage = () => {
 
   const handleLike = async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/post-like/${id}`, {
+      const res = await fetch(`/api/posts/post-like/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,7 @@ const SinglePostPage = () => {
   useEffect(() => {
     const fetchPostData = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/post/${id}`, {
+        const res = await fetch(`/api/posts/post/${id}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const SinglePostPage = () => {
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tags/post/${id}`, {
+        const res = await fetch(`/api/tags/post/${id}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -10,7 +10,7 @@ const PostCardTagSection = ({ post_id }: { post_id: number }) => {
   useEffect(() => {
     const fetchTagData = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tags/post/${post_id}`, {
+        const res = await fetch(`/api/tags/post/${post_id}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -18,7 +18,7 @@ const SugessionReadingSection = () => {
     const recentLikedPosts = async () => {
 
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/post-like`, {
+        const res = await fetch(`/api/posts/post-like`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
