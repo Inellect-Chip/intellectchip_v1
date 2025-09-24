@@ -2,6 +2,10 @@
 
 import React from 'react'
 import Link from 'next/link'
+import { FiYoutube } from "react-icons/fi";
+import { BsTwitterX } from "react-icons/bs";
+import { RiTiktokLine } from "react-icons/ri";
+
 
 const Footer = () => {
   return (
@@ -20,10 +24,9 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm text-white/90">
-            <li><Link href="/" className="hover:underline">Home</Link></li>
-            <li><Link href="/trendings" className="hover:underline">Trendings</Link></li>
-            <li><Link href="/hotDeals" className="hover:underline">Hot Content</Link></li>
-            <li><Link href="/about" className="hover:underline">About Us</Link></li>
+            <li><Link href="/tag/python" className="hover:underline">Python</Link></li>
+            <li><Link href="/tag/ai" className="hover:underline">Artificial Intelligence</Link></li>
+            <li><Link href="/posts" className="hover:underline">All Readings</Link></li>
           </ul>
         </div>
 
@@ -33,9 +36,9 @@ const Footer = () => {
           <p className="text-sm text-white/80 mb-3">Subscribe to our newsletter or follow us on socials.</p>
           {/* Placeholder for future inputs or icons */}
           <div className="flex space-x-3">
-            <span className="bg-white text-primary rounded-full w-8 h-8 flex items-center justify-center font-bold">F</span>
-            <span className="bg-white text-primary rounded-full w-8 h-8 flex items-center justify-center font-bold">X</span>
-            <span className="bg-white text-primary rounded-full w-8 h-8 flex items-center justify-center font-bold">I</span>
+            <Link href="#" className="text-white/70 hover:text-white"><FiYoutube className='text-2xl text-primary bg-white border-[2px] rounded-full w-[40px] h-[40px] p-1.5' /></Link>
+            <Link href="#" className="text-white/70 hover:text-white"><BsTwitterX className='text-2xl text-primary bg-white border-[2px] rounded-full w-[40px] h-[40px] p-1.5' /></Link>
+            <Link href="#" className="text-white/70 hover:text-white"><RiTiktokLine className='text-2xl text-primary bg-white border-[2px] rounded-full w-[40px] h-[40px] p-1.5' /></Link>
           </div>
         </div>
 

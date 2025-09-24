@@ -39,10 +39,14 @@ const PostCard = ({post} : {
                 <PostCardTagSection post_id={post.id} />
               </div>
               
-              <div className="flex gap-1 items-center text-xs sm:text-sm text-gray-500 ml-auto flex-shrink-0">
-                <MdAccessTime className="text-xl" />
-                <p>{post?.post_reading_time} mins</p>
-              </div>
+              {
+                post?.post_reading_time && (
+                  <div className="flex gap-1 items-center text-xs sm:text-sm text-gray-500 ml-auto flex-shrink-0">
+                    <MdAccessTime className="text-xl" />
+                    <p>{post?.post_reading_time} mins</p>
+                  </div>
+                )
+              }
 
             </div>
           </div>
